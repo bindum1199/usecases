@@ -1,0 +1,107 @@
+1. Create folder 'Test' in your home directory​
+    mkdir test
+
+2. Create below files​
+   - employeelist​
+   
+      touch employeelist
+      ls -l
+
+  - skillset​
+
+      touch skillset
+       ls -l
+
+3. Create folder Test2 in home directory​
+       mkdir Test2
+
+  - create symbolink and hard link for skillset file 
+     ln -s skillset symlink
+     ls -l
+
+      ln  skillset hardlink
+      ls -l
+​
+
+  - delete skillset file and check if hardlink and symbolic link file exists​
+     rm skillset
+
+      ln skillset symlink
+ln: failed to create symbolic link 'symlink': File exists
+
+      ln  skillset hardlink
+ln: failed to access 'skillset': No such file or directory
+
+   - explain the difference b/n symbolic and hard links​
+Symbolic link- creates a reference to the original file.
+               inode number will be unique.
+               If the file is deleted the symbolic link becomes invalid
+Hardlink- creates a carbon copy of the file.
+          will have same inode number.
+          directly points to the file.
+
+4. Provide read and write permission to 'user2' group​
+
+   test if user2 group users can access the file​
+           chmod g+r file1
+           chmod g+w file1
+
+5. Revoke write permission from user2 group and test the access again​
+​           chmod g-w file1
+           Access denied
+
+6. Grant write permission for others and test it 
+          chmod o+w file1
+
+7. Revoke write permission for others and test again​
+          chmod o-w file1
+          Access denied
+
+8. Change the group of employeelist file to 'user3'​ test if user3 group have access​
+          chgrp user3 employeelist
+
+9. Change ownership of the file to user5 and test​
+          chown user5 file1
+
+10. check how many employees are there  (hint: use wc command)​
+           wc employees
+
+//2nd excercise//
+
+*Create file “File1”​
+   mkdir File1
+
+*Append 2 more lines to the same file​
+   cat >>File1
+sonata software
+hai
+
+*Create File2 with few lines​
+    mkdir File2
+ cat >>File2
+hello
+welcome
+
+*Display the contents of both File1 and File2​
+    cat File1
+    cat File2
+
+*Concatenate both File1 & 2​
+   cat File1 File2
+
+*Send the above output to File3​
+   cat File1 File2 > File3
+
+*Read File1,File2,File3… File5 . Observe the output​
+   cat File3 File4 File5 >File6
+
+*Redirect the errors of the above command to “errorlog”​
+   cp File6 2> errfile 
+     
+*Concatenate name File1 to 5 and store it in File 10. if any errors, log them in the same file ​
+     cat File1 >> File5 
+     cp File5 File10 2> File10
+
+*Copy File1 to File6. Add the errors to “errorlog”​
+       cp File1 File6 2> errfile
+       
